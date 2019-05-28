@@ -3,32 +3,38 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+int main();
+
 using com::diefesson::conjuntos::Conjunto;
 
-void exibir_menu();
+void iniciar();
 
-int ler_elemento(char* nome);
+void exibirMenu();
 
-Conjunto* ler_conjunto(char* nome);
+int lerElemento(char* nome);
 
-void gerar_conjunto_a();
+Conjunto* lerConjunto(char* nome);
 
-void gerar_conjunto_b();
+int lerNumero();
 
-void exec_ver_pertinencia();//Opção 1
+void gerarConjuntoA();
 
-void exec_maior_menor();//Opção 2
+void gerarConjuntoB();
 
-void exec_igualdade();//Opção 3
+void execVerPertinencia();//Opção 1
 
-void exec_subconjunto();//Opção 4
+void execMaiorMenor();//Opção 2
 
-void exec_uniao();//Opção 5
+void execIgualdade();//Opção 3
 
-void exec_interseccao();//Opção 6
+void execSubconjunto();//Opção 4
 
-void exec_diferenca();//Opção 7
+void execUniao();//Opção 5
 
-void exec_complemento();//Opção 8
+void execInterseccao();//Opção 6
+
+void execDiferenca();//Opção 7
+
+void execComplemento();//Opção 8
 
 #endif //_MAIN_H_

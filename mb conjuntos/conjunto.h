@@ -19,25 +19,26 @@ private:
     int* numeros;
     int tamanho_aloc;
     int tamanho;
-    float fator_de_crescimento;
+    float fatorCrescimento;
 
     void crescer();
 
-    void adicionar_ele_sem_ver(int elemento);//Considera que o elemento adcionado já tenha sido verificado
+    void adicionarElementoSemVerificar(int elemento);//Considera que o elemento adcionado já tenha sido verificado
 
 public:
 
-    static Conjunto* de_sequencia(int inicio, int fim);
+    static Conjunto* deSequencia(int inicio, int fim);
 
     Conjunto();
 
-    Conjunto(Conjunto &original);
+    //Conjunto(Conjunto &original);
+    Conjunto* clone();//Não usarei mais o operador de copia, pois sua funcionalidade é implicita e imprevissivel
 
     ~Conjunto();
 
-    bool adicionar_elemento(int elemento);
+    bool adicionarElemento(int elemento);
 
-    bool remover_elemento(int elemento);
+    bool removerElemento(int elemento);
 
     ComparacaoConjunto comparar(Conjunto *outro);
 
@@ -47,17 +48,17 @@ public:
 
     Conjunto* subtrair(Conjunto *outro);
 
-    int procurar_elemento(int elemento);
+    int procurar(int elemento);
 
-    int obter_elemento(int indice);
+    int obter(int indice);
 
-    int obter_remover_elemento(int indice);
+    int obterRemoverElemento(int indice);
 
-    int obter_tamanho();
+    int obterTamanho();
 
     void ordenar();
 
-    Conjunto* gerar_embaralhado();
+    Conjunto* gerarEmbaralhado();
 
     Conjunto* cortar(int fim);
 

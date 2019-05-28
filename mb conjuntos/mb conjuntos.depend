@@ -15,3 +15,21 @@
 1557360231 /home/diefesson/projetos/mb conjuntos/main.h
 	"conjunto.h"
 
+1559058095 source:/home/diefesson/projetos/mb/conjunto.cpp
+	"conjunto.h"
+	<stdlib.h>
+	<stdio.h>
+
+1559058151 /home/diefesson/projetos/mb/conjunto.h
+
+1559069973 source:/home/diefesson/projetos/mb/main.cpp
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"main.h"
+	"conjunto.h"
+
+1559067895 /home/diefesson/projetos/mb/main.h
+	"conjunto.h"
+
