@@ -163,6 +163,7 @@ void execGerarTodos(){
 
     tamanhoDoUniverso = fimDoUniverso + 1 - inicioDoUniverso;
 
+    delete universo;
     universo = Conjunto::deSequencia(inicioDoUniverso, fimDoUniverso + 1);
 
     gerarConjuntoA();
