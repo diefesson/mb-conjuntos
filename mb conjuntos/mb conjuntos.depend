@@ -1,18 +1,20 @@
 # depslib dependency file v1.0
-1557850397 source:/home/diefesson/projetos/mb conjuntos/conjunto.cpp
+1559157274 source:/home/diefesson/projetos/mb conjuntos/conjunto.cpp
 	"conjunto.h"
 	<stdlib.h>
 	<stdio.h>
 
-1557360225 /home/diefesson/projetos/mb conjuntos/conjunto.h
+1559153109 /home/diefesson/projetos/mb conjuntos/conjunto.h
 
-1558022699 source:/home/diefesson/projetos/mb conjuntos/main.cpp
+1559156764 source:/home/diefesson/projetos/mb conjuntos/main.cpp
 	<locale.h>
 	<stdio.h>
+	<stdlib.h>
+	<time.h>
 	"main.h"
 	"conjunto.h"
 
-1557360231 /home/diefesson/projetos/mb conjuntos/main.h
+1559155628 /home/diefesson/projetos/mb conjuntos/main.h
 	"conjunto.h"
 
 1559058095 source:/home/diefesson/projetos/mb/conjunto.cpp
