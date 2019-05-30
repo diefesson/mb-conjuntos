@@ -8,8 +8,8 @@ namespace com::diefesson::conjuntos {
 Conjunto* Conjunto::deSequencia(int inicio, int fim) {
     Conjunto* c = new Conjunto();
     c->tamanho = fim - inicio;
-    c->tamanho_aloc = c->tamanho;
-    c->numeros = (int*) realloc(c->numeros, c->tamanho_aloc * sizeof(int));
+    c->tamanhoAloc = c->tamanho;
+    c->numeros = (int*) realloc(c->numeros, c->tamanhoAloc * sizeof(int));
 
     int indice = 0;
     for(int i = inicio; i < fim; i++) {
@@ -20,10 +20,10 @@ Conjunto* Conjunto::deSequencia(int inicio, int fim) {
 }
 
 Conjunto::Conjunto() {
-    tamanho_aloc = 32;
+    tamanhoAloc = 32;
     tamanho = 0;
     fatorCrescimento = 1.1;
-    numeros = new int[tamanho_aloc];
+    numeros = new int[tamanhoAloc];
 }
 
 //Conjunto::Conjunto(Conjunto &original) {
@@ -40,7 +40,7 @@ Conjunto::Conjunto() {
 Conjunto* Conjunto::clone() {
     Conjunto *clone = new Conjunto();
     clone->tamanho = tamanho;
-    clone->tamanho_aloc = tamanho;
+    clone->tamanhoAloc = tamanho;
     clone->numeros = (int*) realloc(clone->numeros, sizeof(int) * tamanho);
     for(int i = 0; i < tamanho; i++) {
         clone->numeros[i] = numeros[i];
@@ -53,13 +53,15 @@ Conjunto::~Conjunto() {
 }
 
 void Conjunto::crescer() {
-    tamanho_aloc *= fatorCrescimento;
+    tamanhoAloc *= fatorCrescimento;
+    if(tamanhoAloc < 32)
+        tamanhoAloc = 32;//Um tamanho minimo, previne casos de estagnação do crescimento
 
-    numeros = (int*) realloc(numeros, tamanho_aloc * sizeof(int));
+    numeros = (int*) realloc(numeros, tamanhoAloc * sizeof(int));
 }
 
 void Conjunto::adicionarElementoSemVerificar(int elemento) {
-    if(tamanho == tamanho_aloc)
+    if(tamanho == tamanhoAloc)
         crescer();
 
     numeros[tamanho++] = elemento;
@@ -122,7 +124,7 @@ Conjunto* Conjunto::gerarEmbaralhado() {
     Conjunto* embaralhado = new Conjunto();
 
     embaralhado->tamanho = temp->tamanho;
-    embaralhado->tamanho_aloc = temp->tamanho;
+    embaralhado->tamanhoAloc = temp->tamanho;
     embaralhado->fatorCrescimento = temp->fatorCrescimento;
 
     embaralhado->numeros = (int*) realloc(embaralhado->numeros, temp->tamanho * sizeof(int));
@@ -136,7 +138,7 @@ Conjunto* Conjunto::gerarEmbaralhado() {
 }
 
 void Conjunto::imprimir() {
-    printf("Tamanho: %d, Tamanho alocado: %d\n", tamanho, tamanho_aloc);
+    printf("Tamanho: %d, Tamanho alocado: %d\n", tamanho, tamanhoAloc);
 
     if(tamanho == 0) {
         printf("O conjunto está vazio\n");
@@ -150,7 +152,7 @@ void Conjunto::imprimir() {
 
         printf("%d ", numeros[i]);
     }
-    printf("\n");
+    printf("\n\n");//espaço em branco por utilidade
 }
 
 Conjunto* Conjunto::cortar(int fim) {
@@ -160,8 +162,8 @@ Conjunto* Conjunto::cortar(int fim) {
 Conjunto* Conjunto::cortar(int inicio, int fim) {
     Conjunto* cortado = new Conjunto();
     cortado->tamanho = fim - inicio;
-    cortado->tamanho_aloc = cortado->tamanho;
-    cortado->numeros = (int*) realloc(cortado->numeros, cortado->tamanho_aloc * sizeof(int));
+    cortado->tamanhoAloc = cortado->tamanho;
+    cortado->numeros = (int*) realloc(cortado->numeros, cortado->tamanhoAloc * sizeof(int));
 
     int indice = 0;
     for(int i = inicio; i < fim; i++) {
@@ -174,14 +176,14 @@ Conjunto* Conjunto::cortar(int inicio, int fim) {
 ComparacaoConjunto Conjunto::comparar(Conjunto *outro) {
     if(tamanho > outro->tamanho)
         return ComparacaoConjunto::NAO_CONTIDO;//Este conjunto é maior que o outro
-    bool tamanho_igual = tamanho == outro->tamanho;
+    bool tamanhoIgual = tamanho == outro->tamanho;
 
     for(int i = 0; i < tamanho; i++) {
         if(outro->procurar(numeros[i]) == -1)
             return ComparacaoConjunto::NAO_CONTIDO;//Este conjunto tem um elemento que o outro não tem
     }
 
-    if(tamanho_igual)
+    if(tamanhoIgual)
         return ComparacaoConjunto::IGUAL;
     else
         return ComparacaoConjunto::SUBCONJUNTO;

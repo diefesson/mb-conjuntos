@@ -17,7 +17,7 @@ class Conjunto {
 private:
 
     int* numeros;
-    int tamanho_aloc;
+    int tamanhoAloc;
     int tamanho;
     float fatorCrescimento;
 

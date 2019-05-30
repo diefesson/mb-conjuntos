@@ -15,11 +15,13 @@ int lerElemento(char* nome);
 
 Conjunto* lerConjunto(char* nome);
 
-int lerNumero();
+int lerNumero(char* nome);
 
 void gerarConjuntoA();
 
 void gerarConjuntoB();
+
+void execGerarTodos();
 
 void execVerPertinencia();//Opção 1
 
